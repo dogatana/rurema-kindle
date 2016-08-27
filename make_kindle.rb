@@ -88,8 +88,8 @@ module Toc
       case ref
       when /spec=2fcontrol.html$/, /spec=2fm17n.html$/
         sub = sub_toc_spec('kindle/' + ref) # ok
-      when /_builtin.html$/, /function\/index.html$/
-        sub = sub_toc_lib('kindle/' + ref)
+      #when /_builtin.html$/, /function\/index.html$/
+      #  sub = sub_toc_lib('kindle/' + ref)
       when /library\/index.html$/
         sub = sub_toc_alllib('kindle/' + ref)
       else
@@ -105,52 +105,34 @@ module Toc
   module_function :normalize
 end
 
-
-def show(nav, level = 0)
-  nav.each do |item|
-    if item.is_a?(Array)
-      show(item, level + 1)
-    else
-      print "\t" * level, item, "\n"
-    end
-  end
-end
-
 nav_items = Toc.top_toc('kindle/doc/index.html')
+Kindle::Nav.new('ja', nav_items).write('kindle/nav.xhtml')
 
 spine_files = ['doc/index.html']
 spine_files += nav_items.flatten.map { |x| x.file.sub(/#.*$/, '')}.uniq
+spine_files += Dir.glob("kindle/class/**/*.html").map { |x| x.sub(/^kindle\//, '') }
 
-begin # E20411回避のため
-  node = nav_items.find { |x| x.file == 'function/index.html' }
-  node.file = '' if node
+items = []
+ids   = []
+spine_files.each do |file|
+  item = Kindle::BookItem.new(file)
+  items << item
+  ids << item.id
 end
-Kindle::Nav.new('ja', nav_items).write('kindle/nav.xhtml')
 
+files = []
+%w(doc method library function).each do |dir|
+  files += Dir.glob("kindle/#{dir}/**/*.html").map { |x| x.sub(/^kindle\//, '') }
+end
+
+(files - spine_files).each { |file| items << Kindle::BookItem.new(file) }
+
+items << Kindle::BookItem.new('style.css')
+items << Kindle::BookItem.new('88x31.png')
 
 info = Kindle::BookInfo.new(
   'Ruby Reference Manual for Kindle',
   'Rubyリファレンスマニュアル刷新計画',
   'ja', 'cover.png', '00000000')
-
-items = []
-ids   = []
-spine_files.each_with_index do |file, i|
-  id = "id#{i}"
-  ids << id
-  items << Kindle::BookItem.new(id, file)
-end
-
-files = []
-%w(doc class method library function).each do |dir|
-  files += Dir.glob("kindle/#{dir}/**/*.html").map { |x| x.sub(/^kindle\//, '') }
-end
-
-(files - spine_files).each_with_index do |file, i|
-  items << Kindle::BookItem.new("opt#{i}", file)
-end
-
-items << Kindle::BookItem.new('css', 'style.css')
-items << Kindle::BookItem.new('cclogo', '88x31.png')
 
 Kindle::Opf.new(info, items, ids).write('kindle/rurema.opf')
