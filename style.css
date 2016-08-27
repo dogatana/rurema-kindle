@@ -1,0 +1,210 @@
+/*
+    default.css
+*/
+
+h1 {
+    font-size: 160%;
+    text-align: left;
+    color: white;
+    background-color: #33a;
+    padding: 0.4em;
+    margin: 0.2em 0em 0.5em 0em;
+}
+
+img.sitelogo {
+    vertical-align: middle;
+}
+
+h2 {
+    font-size: 140%;
+    text-align: left;
+    border-left: 10px solid #33a;
+    padding-left: 0.5em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+h3 {
+    font-size: 120%;
+    text-align: left;
+}
+
+h4 {
+    font-size: 120%;
+    text-align: left;
+}
+
+h5, h6 {
+    background-color: red;
+}
+
+p {
+    line-height: 1.4;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: 0px;
+}
+
+span.kindinfo {
+    text-align: right;
+    margin-left: 8em;
+}
+
+span.compileerror {
+    color: red;
+    font-weight: bold;
+}
+
+pre {
+    line-height: 1.1;
+    background-color: #eee;
+    padding: 10px;
+    font-weight: normal;
+    font-family: Consolas, Inconsolata, monospace;
+}
+
+blockquote {
+    background-color: transparent;
+    padding: 4px;
+    margin-left: 3em;
+    font-weight: normal;
+}
+
+ul {
+    margin-left: 0px;
+    padding-left: 2em;
+}
+
+li {
+    margin-left: 0px;
+    padding-left: 0px;
+}
+
+ol li {
+    margin-bottom: 10px;
+}
+
+dl {
+    margin-left: 0em;
+}
+
+dt {
+    font-weight: bold;
+    font-family: Consolas, Inconsolata, monospace;
+}
+
+dl.methodlist dt {
+    /* font-family: sans-serif; */
+    font-family: Consolas,Incosolata,Monosapce;
+}
+
+dd {
+    margin: 0.3em 0em 1em 4em;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    vertical-align: top;
+    background-color: #AAC;
+    border: 3px solid white;
+    padding: 0.3em;
+}
+
+td {
+    text-align: left;
+    vertical-align: top;
+}
+
+table.entries {
+    width: 100%;
+}
+
+table.entries tr {
+    /* border: 1px solid gray; */
+    text-align: left;
+    vertical-align: top;
+}
+
+td.signature {
+    padding: 0;
+    margin: 0;
+    background-color: #DDD;
+    border: 3px solid white;
+    width: 30%;
+    height: 100%;
+}
+
+td.signature a {
+    display: block;
+    padding: 0.3em;
+}
+
+td.description {
+    padding: 0.3em;
+    background-color: #EEE;
+    border: 3px solid white;
+}
+
+td.library {
+    width: 6em;
+    padding: 0.5em;
+    background-color: #DDD;
+    border: 3px solid white;
+}
+
+code {
+    /* font-family: monospace; */
+    font-family: Consolas,Incosolata,monosapce;
+}
+
+a {
+    font-weight: bold;
+    text-decoration: none;
+}
+a:link {
+    color: #33a;
+    background-color: transparent;
+}
+a:visited {
+    /* color: #666666; */
+    color: #33a;
+    background-color: transparent;
+}
+a:hover, a:focus, a:active {
+    color: #fff;
+    background-color: #33a;
+}
+
+a.external {
+    background: transparent url(images/external.png) no-repeat scroll right center;
+    padding: 0 27px 0 0;
+}
+
+a.external:visited {
+    /* color: #666666; */
+    color: #33a;
+    background-color: transparent;
+}
+a.external:hover, a.external:focus, a.external:active {
+    color: #fff;
+    background-color: #33a;
+}
+
+span.permalink {
+    float: right;
+    font-weight: normal;
+}
+
+form {
+    padding: 0px;
+    margin: 0px;
+}
+
+hr {
+    color: #33a;
+    height: 1px;
+}
