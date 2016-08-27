@@ -1,10 +1,19 @@
-# ファイルの取得
 
-Ruby 2.3.0 日本語マニュアルのファイル取得
+#  Ruby Reference Manual for kindle
 
-wget -r -l3 -p -k -w1 --random-wait http://docs.ruby-lang.org/ja/2.3.0/doc/index.html
+## はじめに
 
-l3でないと Delegator.htmlを参照できない
+これはプログラミングの際にはヘルプなりを参照するのだが、オフラインで通読したいと思い、Kindleファイルへの変換を試みたもの。
 
-CCロゴ取得
-wget -O kindle\88x31.png http://i.creativecommons.org/l/by/3.0/88x31.png 
+## 必要なもの
+- wget
+- ruby
+- kindlegen
+
+## 作成方法
+rake で表示される
+
+## ライセンス
+urema.mobi のライセンスはオリジナルと同じ。（CC-BY 3.0)
+
+Ruby スクリプトは MIT ライセンス
